@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pharos Transfer Event Monitor</title>
+    <meta name="description" content="Monitor real ERC-20 Transfer logs through the official Pharos Chain MCP." />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="icon" href="/pharos-logo.png" />
+  </head>
+  <body>
+    <main class="desktop">
+      <header class="desktop-header">
+        <a class="brand" href="/">
+          <span class="logo-box"><img src="/pharos-logo.png" alt="Pharos logo" width="286" height="358" /></span>
+          <span>PHAROS<span class="brand-sub">TRANSFER EVENT MONITOR</span></span>
+        </a>
+        <span class="desktop-badge">MAINNET / 1672</span>
+      </header>
+
+      <section class="app-window" aria-label="Pharos Transfer event monitor">
+        <div class="titlebar">
+          <span class="titlebar-name"><span class="app-icon" aria-hidden="true">≋</span> EVENT MONITOR.EXE</span>
+          <span class="window-chrome" aria-hidden="true"><i>_</i><i>□</i><i>×</i></span>
+        </div>
+        <div class="menubar"><span>Event / Log Monitor</span><span>CHAIN MCP</span><span class="menu-right">READ ONLY</span></div>
+
+        <div class="window-body">
+          <section class="intro">
+            <p class="kicker">PHAROS NETWORK / LOG STREAM</p>
+            <h1>TRANSFER EVENT MONITOR<span class="cursor" aria-hidden="true">_</span></h1>
+            <p>Follow confirmed USDC <code>Transfer</code> logs block by block through the official Pharos Chain MCP.</p>
+          </section>
+
+          <fieldset class="control-panel">
+            <legend>01 · MONITOR CONFIGURATION</legend>
+            <div class="config-row">
+              <div><span>CONTRACT</span><strong id="contract">0xC879C018dB60520F4355C26eD1a6D572cdAC1815</strong></div>
+              <div><span>EVENT</span><strong>Transfer(address,address,uint256)</strong></div>
+            </div>
+            <div class="controls">
+              <button class="primary" id="start" type="button">START MONITOR →</button>
+              <button class="stop" id="stop" type="button" disabled>STOP</button>
+              <span>8-second polling · ≤ 1,000 blocks per query · no wallet</span>
+            </div>
+          </fieldset>
+
+          <section class="telemetry" aria-label="Monitor status">
+            <div><span>CONNECTION</span><strong id="connection" data-state="idle">IDLE</strong></div>
+            <div><span>LAST CHECKED BLOCK</span><strong id="last-block">—</strong></div>
+            <div><span>CHAIN HEAD</span><strong id="chain-head">—</strong></div>
+            <div><span>TOKEN DECIMALS</span><strong id="decimals">—</strong></div>
+          </section>
+
+          <section class="event-window" aria-live="polite">
+            <div class="output-title"><span>02 · TRANSFER_EVENTS.OUT</span><span id="event-count">0 EVENTS</span></div>
+            <section class="event-section live-section">
+              <div class="section-heading">
+                <div><span class="live-dot"></span><h2>CAUGHT AFTER MONITOR START</h2></div>
+                <span id="live-range">START MONITOR TO BEGIN</span>
+              </div>
+              <div class="event-list" id="live-events">
+                <div class="empty-state"><strong>NO LIVE EVENTS CAPTURED</strong><span>New matching logs will appear here while monitoring is active.</span></div>
+              </div>
+            </section>
+            <section class="event-section historical-section">
+              <div class="section-heading">
+                <div><span class="history-mark">H</span><h2>HISTORICAL CONTEXT</h2></div>
+                <span id="history-range">LAST 100 BLOCKS AT START</span>
+              </div>
+              <p class="section-note">These logs happened before monitoring started. They are context only and are never presented as live captures.</p>
+              <div class="event-list" id="history-events">
+                <div class="empty-state"><strong>HISTORY NOT LOADED</strong><span>Select Start Monitor to fetch recent confirmed logs.</span></div>
+              </div>
+            </section>
+          </section>
+        </div>
+
+        <div class="statusbar">
+          <span><span class="status-dot"></span><b id="system-status">SYSTEM READY</b></span>
+          <span id="retry-status">CURSOR SAFE</span>
+          <span>MCP / READ ONLY</span>
+        </div>
+      </section>
+
+      <footer>
+        <span>PHAROS AGENT ARENA · EVENT / LOG MONITOR</span>
+        <a href="https://github.com/PharosNetwork/pharos-mcp" target="_blank" rel="noreferrer">MCP DOCUMENTATION ↗</a>
+      </footer>
+    </main>
+    <script src="/app.js" defer></script>
+  </body>
+</html>
+
