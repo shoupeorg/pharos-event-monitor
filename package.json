@@ -1,0 +1,20 @@
+{
+  "name": "pharos-event-monitor",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "esbuild ./src/worker.js --bundle --format=esm --platform=browser --target=es2022 --outfile=worker.js",
+    "check": "node --test",
+    "deploy": "npm run build && wrangler deploy --no-bundle",
+    "dev": "npm run build && wrangler dev",
+    "login": "wrangler login"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.27.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.27.3",
+    "wrangler": "4.92.0"
+  }
+}
