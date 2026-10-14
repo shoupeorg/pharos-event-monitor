@@ -18604,6 +18604,10 @@ var CONTRACT = "0xC879C018dB60520F4355C26eD1a6D572cdAC1815";
 var TRANSFER_TOPIC = "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef";
 var MAX_LOG_BLOCKS = 1000n;
 function parseBlock(value, label = "block") {
+  if (typeof value === "bigint") {
+    if (value < 0n) throw new Error(`${label} is not a block number`);
+    return value;
+  }
   if (typeof value !== "string" && typeof value !== "number") {
     throw new Error(`${label} is not a block number`);
   }
